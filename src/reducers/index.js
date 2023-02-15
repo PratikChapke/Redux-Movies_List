@@ -3,7 +3,6 @@ export default function movies (state=[], action){
 
         return action.movies;
 
-
     }
     return state
 }
