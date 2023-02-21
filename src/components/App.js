@@ -3,28 +3,27 @@ import React from "react";
 import {data } from '../data'
 import Navbar from "./Navbar";
 import MovieCard  from './MovieCard';
+import { ADD_MOVIES } from "../actions";
 
 class App extends React.Component {
 
    componentDidMount(){
     // we use 
-    const {store}=this.props;
+     const {store}=this.props;   // inside store has array list and we will add favourites
     store.subscribe(()=>{
       console.log('UPDATED ')
       this.forceUpdate();
     })
     // dispatch to redux file 
-    store.dispatch(
-      {
-        type : 'ADD_MOVIES',
-        movies : data 
-      })
+    store.dispatch(addMovies(data))
+
      console.log('STATES' , this.props.store.getState());
    }
 
   render(){
     // fatch data from root file using props and 
-     const movies= this.props.store.getState()
+     const {list }= this.props.store.getState() 
+     console.log('render' , this.props.store.getState())                       //   // inside store has array list and we will add favourites
 
   
     return (
@@ -39,7 +38,7 @@ class App extends React.Component {
           </div>
           <div className="List">
           
-          { movies.map((movie, index)=>{
+          { list.map((movie, index)=>{
             return <MovieCard movie ={movie} key={index}/>
           })}
           </div>
@@ -49,5 +48,6 @@ class App extends React.Component {
     );
     }
 }
+import { addMovies } from "../actions";
 
 export default App;
