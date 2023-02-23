@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+## I build this project for Leaning Redux library and learing base project 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
