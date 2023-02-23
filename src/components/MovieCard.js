@@ -1,12 +1,19 @@
 import React from 'react'
+import {  addFavourites } from '../actions';
 
 
 class MovieCard extends React.Component {
     render() {
   // In App.js  send movies  data through props hare we 
    //   here we use data in html component 
-      const {  movie } = this.props ;
- 
+   const  { movie , isFavourites } = this.props ;
+     
+     handleFavourites = () => {
+      const {movie} = this.props ;
+      this.props.dispatch(addFavourites(movie)) ;
+  }
+  handleUnFavourites = ()=>{
+  }
 
       return (
         <div className='movie-card'>
@@ -20,7 +27,10 @@ class MovieCard extends React.Component {
              
              <div className='footer'>
                <div className='rating'>{movie.imdbRating}</div>
-               <button className='=favourite-btn'>favourite</button>
+               isFavourites 
+                ? <button className='=unfavourite-btn' onClick={this.handleUnFavourites}>Unfavourite</button>
+                : <button className='=favourite-btn' onClick={this.handleFavourites}>favourite</button>
+               
              </div>
              </div>
             
